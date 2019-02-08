@@ -11,10 +11,16 @@ const responseData = {
 
 const getBranches = () => {
     return axios.get(`https://api.github.com/repos/${process.env['GITHUB_OWNER']}/${process.env['GITHUB_REPO']}/branches?access_token=${process.env['GITHUB_TOKEN']}`)
+        .catch((e) => {
+            return { data:[] };
+    })
 };
 
 const getTags = () => {
     return axios.get(`https://api.github.com/repos/${process.env['GITHUB_OWNER']}/${process.env['GITHUB_REPO']}/git/refs/tags?access_token=${process.env['GITHUB_TOKEN']}`)
+        .catch((e) => {
+            return { data:[] };
+    })
 };
 
 const getGithubInfo = () => {
